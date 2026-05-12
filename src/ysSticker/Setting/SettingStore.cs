@@ -6,7 +6,7 @@ namespace ysSticker
     /// <summary>
     /// 設定データクラス
     /// </summary>
-    internal class SettingStore
+    public class SettingStore
     {
         /// <summary>
         /// デフォルトのフォント設定値
@@ -67,6 +67,7 @@ namespace ysSticker
                     // 変換できない場合は例外をスローする
                     throw new ArgumentException("無効な形式です", nameof(DisplayTextFontString));
                 }
+                this._displayTextFontString = value;
             }
         }
 

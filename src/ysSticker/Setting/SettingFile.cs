@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace ysSticker
 {
-    internal class SettingFile
+    public class SettingFile
     {
         /// <summary>
         /// 設定ファイルのファイルパス
@@ -66,9 +66,10 @@ namespace ysSticker
         public void Export()
         {
             // ディレクトリが存在しない場合は作成する
-            if (Directory.Exists(this.FilePath) == false)
+            string dirName = Path.GetDirectoryName(this.FilePath);
+            if (Directory.Exists(dirName) == false)
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(this.FilePath));
+                Directory.CreateDirectory(dirName);
             }
 
             // 設定ファイルを JSON 形式で保存する

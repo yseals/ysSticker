@@ -146,6 +146,8 @@ namespace ysSticker
             // フォントとブラシの設定
             this.SetStickerFont();
             this.SetStickerBrush();
+
+            this.Invalidate();
         }
 
         /// <summary>
@@ -200,6 +202,24 @@ namespace ysSticker
 
             Color col = (Color)new ColorConverter().ConvertFromString(this._settingFile.Store.DisplayTextColorString);
 
+            // ブラシの色とTransparentKeyが同じ場合は、調整する
+            if (this.TransparencyKey.ToArgb() == col.ToArgb())
+            {
+                // 透明度を維持して、Rを１ずらすことで文字が東名にならないようにする
+                byte tmpR = col.R;
+
+                if (tmpR == 255)
+                {
+                    tmpR = 254;
+                }
+                else
+                {
+                    tmpR += 1;
+                }
+
+                col = Color.FromArgb(col.A, tmpR, col.G, col.B); 
+            }
+
             // 新しいブラシオブジェクト作成
             Brush newBrash = new SolidBrush(col);
 
@@ -209,6 +229,7 @@ namespace ysSticker
 
             // 古いブラシオブジェクトある場合は破棄
             oldBrash?.Dispose();
+
         }
 
         /// <summary>
@@ -261,7 +282,13 @@ namespace ysSticker
         /// <param name="e"></param>
         private void SettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: 設定画面を表示する
+            // 設定画面を表示する
+            FormConfig configForm = new FormConfig(this._settingFile);
+            if (configForm.ShowDialog() == DialogResult.OK)
+            {
+                // フォント、ブラシの再設定
+                this.SetStickerPaintObject();
+            }
         }
 
         /// <summary>
