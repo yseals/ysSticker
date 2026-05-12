@@ -98,13 +98,22 @@ namespace ysSticker
             // ステッカー表示テキスト取得
             string displayText = this._settingFile.Store.DisplayText;
 
-            // TODO: 表示サイズ算出
+            // テキスト表示のためのStringFormatオブジェクト作成
+            StringFormat sf = new StringFormat(StringFormat.GenericTypographic);
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
 
-            // TODO: フォームサイズ調整
+            // 表示サイズ算出
+            SizeF paintSize = e.Graphics.MeasureString(displayText, this._stickerFont);
+
+            // フォーム表示位置とサイズを調整
+            this.SetFormSizeAndPosition(paintSize);
+
+            // テキストの描画品質を設定、アンチエイリアスを無効で描画する
+            e.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
             // テキスト表示
-            e.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
-            e.Graphics.DrawString(displayText, this._stickerFont, this._stickerBrush, new RectangleF(0, 0, 200, 200));
+            e.Graphics.DrawString(displayText, this._stickerFont, this._stickerBrush, new Rectangle(0, 0, (int)paintSize.Width, (int)paintSize.Height), sf);
         }
 
         /// <summary>
@@ -200,6 +209,25 @@ namespace ysSticker
 
             // 古いブラシオブジェクトある場合は破棄
             oldBrash?.Dispose();
+        }
+
+        /// <summary>
+        /// 表示位置を設定します
+        /// </summary>
+        private void SetFormSizeAndPosition(SizeF paintSize)
+        {
+            //プライマリディスプレイの作業領域の高さと幅を取得
+            int dh = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+            int dw = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+
+            // フォームサイズを調整
+            this.Width = (int)paintSize.Width;
+            this.Height = (int)paintSize.Height;
+
+            // this.Widthを使用するので、フォームサイズを調整してから表示位置を設定する
+            // フォームの表示位置を、画面の右上に設定、20pxのマージンをつける
+            this.Top = 0 + 20;
+            this.Left = dw - this.Width - 20;
         }
 
         /// <summary>
