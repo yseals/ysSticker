@@ -80,7 +80,7 @@
             this.lblDisplayColor.Location = new System.Drawing.Point(26, 307);
             this.lblDisplayColor.Name = "lblDisplayColor";
             this.lblDisplayColor.Size = new System.Drawing.Size(29, 20);
-            this.lblDisplayColor.TabIndex = 3;
+            this.lblDisplayColor.TabIndex = 5;
             this.lblDisplayColor.Text = "色";
             // 
             // btnFontSelect
@@ -130,7 +130,7 @@
             this.lblDisplaySambleView.Location = new System.Drawing.Point(0, 2);
             this.lblDisplaySambleView.Name = "lblDisplaySambleView";
             this.lblDisplaySambleView.Size = new System.Drawing.Size(70, 20);
-            this.lblDisplaySambleView.TabIndex = 10;
+            this.lblDisplaySambleView.TabIndex = 0;
             this.lblDisplaySambleView.Text = "Sample";
             this.lblDisplaySambleView.UseMnemonic = false;
             // 
@@ -140,7 +140,7 @@
             this.lblDisplaySample.Location = new System.Drawing.Point(405, 26);
             this.lblDisplaySample.Name = "lblDisplaySample";
             this.lblDisplaySample.Size = new System.Drawing.Size(111, 20);
-            this.lblDisplaySample.TabIndex = 11;
+            this.lblDisplaySample.TabIndex = 10;
             this.lblDisplaySample.Text = "表示サンプル";
             // 
             // txtDisplayFont
@@ -152,7 +152,7 @@
             this.txtDisplayFont.Name = "txtDisplayFont";
             this.txtDisplayFont.ReadOnly = true;
             this.txtDisplayFont.Size = new System.Drawing.Size(345, 27);
-            this.txtDisplayFont.TabIndex = 5;
+            this.txtDisplayFont.TabIndex = 3;
             // 
             // txtDisplayColor
             // 
@@ -163,7 +163,7 @@
             this.txtDisplayColor.Name = "txtDisplayColor";
             this.txtDisplayColor.ReadOnly = true;
             this.txtDisplayColor.Size = new System.Drawing.Size(74, 27);
-            this.txtDisplayColor.TabIndex = 13;
+            this.txtDisplayColor.TabIndex = 6;
             // 
             // pnlSampleView
             // 
