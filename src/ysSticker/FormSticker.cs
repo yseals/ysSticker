@@ -253,5 +253,43 @@ namespace ysSticker
             }
             base.Dispose(disposing);
         }
+
+        /// <summary>
+        /// タスクトレイメニューの設定クリックイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: 設定画面を表示する
+        }
+
+        /// <summary>
+        /// タスクトレイメニューのバージョンクリックイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: バージョン表示画面を表示する
+        }
+
+        /// <summary>
+        /// タスクトレイメニューの終了クリックイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EndToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 終了確認のメッセージボックスを表示
+            if (MessageBox.Show(Application.ProductName + "を終了しますか？", Application.ProductName + "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                // ユーザーが「いいえ」を選択した場合は、終了処理を中止する
+                return;
+            }
+
+            // アプリケーションを終了する
+            this.Close();
+        }
     }
 }
