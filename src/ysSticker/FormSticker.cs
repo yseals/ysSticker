@@ -298,7 +298,9 @@ namespace ysSticker
         /// <param name="e"></param>
         private void VersionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: バージョン表示画面を表示する
+            // バージョン表示画面を表示する
+            FormAbout formAbout = new FormAbout();
+            formAbout.ShowDialog();
         }
 
         /// <summary>
